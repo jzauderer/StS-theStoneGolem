@@ -86,15 +86,15 @@ public class DefaultMod implements
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
-    private static final String MODNAME = "Default Mod";
-    private static final String AUTHOR = "Gremious"; // And pretty soon - You!
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String MODNAME = "The Stone Giant";
+    private static final String AUTHOR = "Fault, Mokugya, and Gremious"; // And pretty soon - You!
+    private static final String DESCRIPTION = "A character mod based on Tiny from Dota 2";
     
     // =============== INPUT TEXTURE LOCATION =================
     
     // Colors (RGB)
     // Character Color
-    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    public static final Color TINY_RED = CardHelper.getColor(180.0f, 67.0f, 53.0f);
     
     // Potion Colors in RGB
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
@@ -112,6 +112,9 @@ public class DefaultMod implements
     private static final String ATTACK_DEFAULT_GRAY = "theStoneGiantResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theStoneGiantResources/images/512/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY = "theStoneGiantResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_RED = "theStoneGiantResources/images/512/bg_attack_default_red.png";
+    private static final String SKILL_DEFAULT_RED = "theStoneGiantResources/images/512/bg_skill_default_red.png";
+    private static final String POWER_DEFAULT_RED = "theStoneGiantResources/images/512/bg_power_default_red.png";
     
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theStoneGiantResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theStoneGiantResources/images/512/card_small_orb.png";
@@ -119,6 +122,9 @@ public class DefaultMod implements
     private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theStoneGiantResources/images/1024/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theStoneGiantResources/images/1024/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theStoneGiantResources/images/1024/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_RED_PORTRAIT = "theStoneGiantResources/images/1024/bg_attack_default_red.png";
+    private static final String SKILL_DEFAULT_RED_PORTRAIT = "theStoneGiantResources/images/1024/bg_skill_default_red.png";
+    private static final String POWER_DEFAULT_RED_PORTRAIT = "theStoneGiantResources/images/1024/bg_power_default_red.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theStoneGiantResources/images/1024/card_default_gray_orb.png";
     
     // Character assets
@@ -202,12 +208,12 @@ public class DefaultMod implements
         
         logger.info("Done subscribing");
         
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
-        
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
-                ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
+        logger.info("Creating the color " + TheDefault.Enums.COLOR_TINY.toString());
+
+        BaseMod.addColor(TheDefault.Enums.COLOR_TINY, TINY_RED, TINY_RED, TINY_RED,
+                TINY_RED, TINY_RED, TINY_RED, TINY_RED,
+                ATTACK_DEFAULT_RED, SKILL_DEFAULT_RED, POWER_DEFAULT_RED, ENERGY_ORB_DEFAULT_GRAY,
+                ATTACK_DEFAULT_RED_PORTRAIT, SKILL_DEFAULT_RED_PORTRAIT, POWER_DEFAULT_RED_PORTRAIT,
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         
         logger.info("Done creating the color");
@@ -392,9 +398,9 @@ public class DefaultMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
+        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_TINY);
+        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_TINY);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_TINY);
         
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
