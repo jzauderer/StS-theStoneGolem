@@ -165,6 +165,7 @@ public class TheDefault extends CustomPlayer {
         retVal.add(DefaultCommonSkill.ID);
         retVal.add(DefaultCommonSkill.ID);
         retVal.add(GrowCard.ID);
+        retVal.add(SettleQuarry.ID);
         return retVal;
     }
 

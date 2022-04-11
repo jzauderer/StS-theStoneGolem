@@ -9,8 +9,12 @@
   },
   "theStoneGiant:GrowCard": {
     "NAME": "Grow",
-    "DESCRIPTION": "Innate. NL thestonegiant:Grow.",
-    "UPGRADE_DESCRIPTION": "thestonegiant:Grow."
+    "DESCRIPTION": "Innate. NL thestonegiant:Grow."
+  },
+  "theStoneGiant:SettleQuarry": {
+    "NAME": "Settle Quarry",
+    "DESCRIPTION": "Deal !D! damage for each stack of thestonegiant:Grow you have. NL If Fatal, heal !M!. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage for each stack of thestonegiant:Grow you have. NL If Fatal, heal !M!."
   },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",

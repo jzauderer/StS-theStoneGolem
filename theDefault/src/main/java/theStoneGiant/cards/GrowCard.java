@@ -15,6 +15,13 @@ import theStoneGiant.powers.GrowPower;
 import static theStoneGiant.DefaultMod.makeCardPath;
 
 public class GrowCard extends AbstractDynamicCard {
+
+    /*
+     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
+     *
+     * Grow: Innate. Gain 1 stack of Grow.
+     */
+
     // TEXT DECLARATION
 
     public static final String ID = DefaultMod.makeID(GrowCard.class.getSimpleName());
@@ -48,8 +55,8 @@ public class GrowCard extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 3)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 3)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 2)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new GrowPower(p, p, 1)));
     }
 
