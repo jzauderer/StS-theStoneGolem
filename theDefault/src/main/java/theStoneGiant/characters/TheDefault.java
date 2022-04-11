@@ -199,7 +199,7 @@ public class TheDefault extends CustomPlayer {
     // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
-        return 0;
+        return 5;
     }
 
     // Should return the card color enum to be associated with your character.

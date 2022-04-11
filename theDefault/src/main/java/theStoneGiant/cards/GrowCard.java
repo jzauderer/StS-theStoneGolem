@@ -18,7 +18,7 @@ public class GrowCard extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = DefaultMod.makeID(GrowCard.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("tony.png");
 
     // /TEXT DECLARATION/
 
@@ -42,6 +42,7 @@ public class GrowCard extends AbstractDynamicCard {
     public GrowCard() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = AMOUNT;
+        isInnate = true;
     }
 
     // Actions the card should do.

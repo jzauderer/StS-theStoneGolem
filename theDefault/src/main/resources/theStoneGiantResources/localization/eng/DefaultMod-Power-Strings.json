@@ -9,6 +9,6 @@
 },
 "theStoneGiant:GrowPower": {
         "NAME": "Grow",
-        "DESCRIPTIONS": ["You have grown #b", " time." , " times."]
+        "DESCRIPTIONS": ["You have used Grow #b", " time." , " times."]
 }
 }
