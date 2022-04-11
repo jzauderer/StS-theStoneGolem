@@ -7,6 +7,11 @@
     "NAME": "Defend",
     "DESCRIPTION": "Gain !B! Block. NL thestonegiant:Multiword_Keyword."
   },
+  "theStoneGiant:GrowCard": {
+    "NAME": "Grow",
+    "DESCRIPTION": "thestonegiant:Grow.",
+    "UPGRADE_DESCRIPTION": "thestonegiant:Grow."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",

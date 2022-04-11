@@ -7,6 +7,12 @@
     "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
   },
   {
+    "NAMES": [
+      "grow"
+    ],
+    "DESCRIPTION": "Gain 2 Strength and Dexterity, but gain 1 less energy at the start of each turn."
+  },
+  {
     "PROPER_NAME": "Multiword Keyword",
     "NAMES": [
       "Multiword Keyword",

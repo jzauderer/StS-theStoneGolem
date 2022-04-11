@@ -6,5 +6,9 @@
 "theStoneGiant:RarePower": {
         "NAME": "Placeholder Power",
         "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
+},
+"theStoneGiant:GrowPower": {
+        "NAME": "Grow",
+        "DESCRIPTIONS": ["You have grown #b", " time." , " times."]
 }
 }
