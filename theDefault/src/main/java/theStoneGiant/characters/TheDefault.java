@@ -48,9 +48,9 @@ public class TheDefault extends CustomPlayer {
     public static class Enums {
         @SpireEnum
         public static AbstractPlayer.PlayerClass THE_DEFAULT;
-        @SpireEnum(name = "COLOR_TINY") // These two HAVE to have the same absolutely identical name.
+        @SpireEnum(name = "TINY") // These two HAVE to have the same absolutely identical name.
         public static AbstractCard.CardColor COLOR_TINY;
-        @SpireEnum(name = "COLOR_TINY") @SuppressWarnings("unused")
+        @SpireEnum(name = "TINY") @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
     }
 
@@ -63,8 +63,8 @@ public class TheDefault extends CustomPlayer {
     public static final int STARTING_HP = 75;
     public static final int MAX_HP = 75;
     public static final int STARTING_GOLD = 99;
-    public static final int CARD_DRAW = 9;
-    public static final int ORB_SLOTS = 3;
+    public static final int CARD_DRAW = 5;
+    public static final int ORB_SLOTS = 1;
 
     // =============== /BASE STATS/ =================
 
@@ -171,10 +171,6 @@ public class TheDefault extends CustomPlayer {
     // Starting Relics	
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game

@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theStoneGiant.DefaultMod;
 import theStoneGiant.characters.TheDefault;
+import theStoneGiant.powers.GrowPower;
 
 import static theStoneGiant.DefaultMod.makeCardPath;
 
@@ -48,6 +49,7 @@ public class GrowCard extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 3)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 3)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new GrowPower(p, p, 1)));
     }
 
     //Upgraded stats.
