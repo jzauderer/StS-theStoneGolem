@@ -174,9 +174,9 @@ public class TheDefault extends CustomPlayer {
 
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+//        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+//        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+//        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
     }
