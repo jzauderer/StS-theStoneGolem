@@ -42,6 +42,8 @@ public class GrowCard extends AbstractDynamicCard {
 
     private int AMOUNT = 1;
 
+    private int GROW_POTENCY = 3;
+
 
     // /STAT DECLARATION/
 
@@ -55,8 +57,8 @@ public class GrowCard extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, 2)));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, 2)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new StrengthPower(p, GROW_POTENCY)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new DexterityPower(p, GROW_POTENCY)));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new GrowPower(p, p, 1)));
     }
 
