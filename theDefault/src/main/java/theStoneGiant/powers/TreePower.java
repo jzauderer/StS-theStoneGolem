@@ -3,23 +3,27 @@ package theStoneGiant.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theStoneGiant.DefaultMod;
 import theStoneGiant.util.TextureLoader;
 
+import java.util.ArrayList;
+
 import static theStoneGiant.DefaultMod.makePowerPath;
 
-//Gain 1 stack of grow.
 
 public class TreePower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
@@ -69,17 +73,46 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
         return super.atDamageGive(damage, type);
     }
 
-    //Remove a charge of Tree after using an attack
+    //If playing an attack, copy the card for each monster
     @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if(card.type == AbstractCard.CardType.ATTACK){
-            if(owner.getPower(TreePower.POWER_ID).amount > 1)
-                owner.addPower(new TreePower(owner, owner, -1));
-            else
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0)
+        {
+            ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
+            for(int i = 0; i < allMonsters.size(); i++){
+                if(!allMonsters.get(i).equals(m)){
+                    //Re-play the card on all monsters other than the one we targeted
+                    AbstractCard tmp = card.makeSameInstanceOf();
+                    tmp.purgeOnUse = true;
+                    tmp.current_x = card.current_x;
+                    tmp.current_y = card.current_y;
+                    tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+                    tmp.target_y = (float)Settings.HEIGHT / 2.0F;
+                    tmp.calculateCardDamage(allMonsters.get(i));
+                    AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, allMonsters.get(i), card.energyOnUse, true, true), true);
+                }
+            }
+
+            //Remove a charge of Tree after using an attack
+            this.amount--;
+            if(this.amount == 0)
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
         }
-        super.onAfterUseCard(card, action);
+
+        super.onPlayCard(card, m);
     }
+
+    //Remove a charge of Tree after using an attack
+//    @Override
+//    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+//        if(card.type == AbstractCard.CardType.ATTACK){
+//            if(owner.getPower(TreePower.POWER_ID).amount > 1)
+//                owner.addPower(new TreePower(owner, owner, -1));
+//            else
+//                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
+//        }
+//        super.onAfterUseCard(card, action);
+//    }
 
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override

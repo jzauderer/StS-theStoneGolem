@@ -39,7 +39,7 @@ public class TreeGrab extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
 
-    private int AMOUNT = 3;
+    private int AMOUNT = 4;
 
     // /STAT DECLARATION/
 
