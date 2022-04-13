@@ -16,6 +16,10 @@
     "DESCRIPTION": "Deal !D! damage for each stack of thestonegiant:Grow you have. NL If Fatal, heal !M!. Exhaust.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage for each stack of thestonegiant:Grow you have. NL If Fatal, heal !M!."
   },
+  "theStoneGiant:TreeGrab": {
+    "NAME": "Tree Grab",
+    "DESCRIPTION": "Equip a thestonegiant:Tree for your next !M! attacks."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",

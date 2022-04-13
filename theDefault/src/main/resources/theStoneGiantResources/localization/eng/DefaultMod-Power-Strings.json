@@ -10,5 +10,9 @@
 "theStoneGiant:GrowPower": {
         "NAME": "Grow",
         "DESCRIPTIONS": ["You have used Grow #b", " time." , " times."]
+},
+"theStoneGiant:TreePower": {
+        "NAME": "Tree Equipped",
+        "DESCRIPTIONS": ["Your next #b", " attack hits all enemies for 50% damage.", " attacks hit all enemies for 50% damage."]
 }
 }

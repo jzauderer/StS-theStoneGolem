@@ -13,6 +13,12 @@
     "DESCRIPTION": "Gain 3 Strength and Dexterity, but gain 1 less Energy at the start of each turn."
   },
   {
+    "NAMES": [
+      "tree"
+    ],
+    "DESCRIPTION": "Your attacking cards hit all enemies, but deal only 70% damage to each."
+  },
+  {
     "PROPER_NAME": "Multiword Keyword",
     "NAMES": [
       "Multiword Keyword",
