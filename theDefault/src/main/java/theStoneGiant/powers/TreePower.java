@@ -3,12 +3,17 @@ package theStoneGiant.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import theStoneGiant.DefaultMod;
 import theStoneGiant.util.TextureLoader;
 
@@ -40,11 +45,40 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
         type = PowerType.BUFF;
         isTurnBased = false;
 
-        // We load those textures here.
+        // We load those txtures here.
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    //Cut damage done when wielding a tree
+    @Override
+    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+        //We're only modifying NORMAL type damage, so just return if it's not that
+        if(!type.equals(DamageInfo.DamageType.NORMAL))
+            return super.atDamageGive(damage, type);
+        //This won't affect strength bonus, so we subtract that before cutting the damage, then re-add it
+        int str = 0;
+        if(owner.hasPower(StrengthPower.POWER_ID)){
+            str = owner.getPower(StrengthPower.POWER_ID).amount;
+        }
+        damage -= str;
+        damage *= 0.5F;
+        damage += str;
+        return super.atDamageGive(damage, type);
+    }
+
+    //Remove a charge of Tree after using an attack
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        if(card.type == AbstractCard.CardType.ATTACK){
+            if(owner.getPower(TreePower.POWER_ID).amount > 1)
+                owner.addPower(new TreePower(owner, owner, -1));
+            else
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
+        }
+        super.onAfterUseCard(card, action);
     }
 
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))

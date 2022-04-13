@@ -16,7 +16,7 @@
     "NAMES": [
       "tree"
     ],
-    "DESCRIPTION": "Your attacking cards hit all enemies, but deal only 70% damage to each."
+    "DESCRIPTION": "Your attacking cards hit all enemies, but deal #b50% less damage. Damage bonus from #yStrength is not reduced."
   },
   {
     "PROPER_NAME": "Multiword Keyword",
