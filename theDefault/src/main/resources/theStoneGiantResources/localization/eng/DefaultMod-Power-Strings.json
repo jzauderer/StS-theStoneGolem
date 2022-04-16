@@ -13,6 +13,6 @@
 },
 "theStoneGiant:TreePower": {
         "NAME": "Tree Equipped",
-        "DESCRIPTIONS": ["Your next #b", " attack hits all enemies, but deals #b50% less damage.", " attacks hit all enemies, but deal #b50%  less damage."]
+        "DESCRIPTIONS": ["Your next #b", " single-target attack hits all enemies, but deals #b50% less damage.", " single-target attacks hit all enemies, but deal #b50%  less damage."]
 }
 }

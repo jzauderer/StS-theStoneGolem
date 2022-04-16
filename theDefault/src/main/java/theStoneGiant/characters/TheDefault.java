@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.Whirlwind;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -156,17 +157,18 @@ public class TheDefault extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultCommonAttack.ID);
         retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(DefaultCommonSkill.ID);
-        retVal.add(GrowCard.ID);
-        retVal.add(SettleQuarry.ID);
+//        retVal.add(DefaultCommonSkill.ID);
+//        retVal.add(DefaultCommonSkill.ID);
+//        retVal.add(DefaultCommonSkill.ID);
+//        retVal.add(DefaultCommonSkill.ID);
+//        retVal.add(GrowCard.ID);
+//        retVal.add(SettleQuarry.ID);
         retVal.add(TreeGrab.ID);
+        retVal.add(Whirlwind.ID);
         return retVal;
     }
 

@@ -76,7 +76,7 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
     //If playing an attack, copy the card for each monster
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0)
+        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0 && card.target != AbstractCard.CardTarget.ALL && card.target != AbstractCard.CardTarget.NONE && card.target != AbstractCard.CardTarget.ALL_ENEMY)
         {
             ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
             for(int i = 0; i < allMonsters.size(); i++){
@@ -95,6 +95,7 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
 
             //Remove a charge of Tree after using an attack
             this.amount--;
+            this.updateDescription();
             if(this.amount == 0)
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
         }
