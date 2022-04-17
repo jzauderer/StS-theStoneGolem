@@ -21,7 +21,7 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = DefaultMod.makeID(DefaultCommonSkill.class.getSimpleName());
-    public static final String IMG = makeCardPath("Skill.png");
+    public static final String IMG = makeCardPath("tiny_defend.png");
 
     // /TEXT DECLARATION/
 
