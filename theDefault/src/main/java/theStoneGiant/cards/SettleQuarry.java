@@ -57,6 +57,7 @@ public class SettleQuarry extends AbstractDynamicCard {
         magicNumber = baseMagicNumber = HEAL;
 
         isMultiDamage = true;
+        this.tags.add(CardTags.HEALING);
     }
 
     // Actions the card should do.

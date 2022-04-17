@@ -24,6 +24,10 @@
     "NAME": "Gank",
     "DESCRIPTION": "Deal !D! damage. NL If this is the first attack you've played this turn, deal an additional !M! damage."
   },
+  "theStoneGiant:JustTPOut": {
+    "NAME": "Just TP Out",
+    "DESCRIPTION": "Gain !B! Block. Draw !M! card for each stack of thestonegiant:Grow you have."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",
