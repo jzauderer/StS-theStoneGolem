@@ -158,7 +158,7 @@ public class TheDefault extends CustomPlayer {
 
         retVal.add(DefaultCommonAttack.ID);
         retVal.add(DefaultCommonAttack.ID);
-        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultCommonAttack.ID);
 //        retVal.add(DefaultCommonAttack.ID);
 //        retVal.add(DefaultCommonSkill.ID);
 //        retVal.add(DefaultCommonSkill.ID);
@@ -172,6 +172,7 @@ public class TheDefault extends CustomPlayer {
         //Temporary cards, just for testing them
         retVal.add(Gank.ID);
         retVal.add(JustTPOut.ID);
+        retVal.add(EchoSabre.ID);
 
         return retVal;
     }

@@ -47,7 +47,7 @@ public class JustTPOut extends AbstractDynamicCard {
     public JustTPOut() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        baseMagicNumber = DRAW_PER_GROW;
+        magicNumber = baseMagicNumber = DRAW_PER_GROW;
     }
 
 

@@ -50,7 +50,7 @@ public class Gank extends CustomCard {
     public static final CardColor COLOR = TheDefault.Enums.COLOR_TINY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int DAMAGE = 5;
     private static final int BONUS_DAMAGE = 8;
     private static final int UPGRADE_PLUS_DMG = 3;
 
@@ -60,7 +60,7 @@ public class Gank extends CustomCard {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         baseDamage = DAMAGE;
-        baseMagicNumber = BONUS_DAMAGE;
+        magicNumber = baseMagicNumber = BONUS_DAMAGE;
     }
 
     // Actions the card should do.

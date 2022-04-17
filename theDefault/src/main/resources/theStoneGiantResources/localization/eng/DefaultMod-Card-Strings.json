@@ -28,6 +28,10 @@
     "NAME": "Just TP Out",
     "DESCRIPTION": "Gain !B! Block. Draw !M! card for each stack of thestonegiant:Grow you have."
   },
+  "theStoneGiant:EchoSabre": {
+    "NAME": "Echo Sabre",
+    "DESCRIPTION": "Deal !D! damage twice. Apply !M! Weaken."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",
