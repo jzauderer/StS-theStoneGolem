@@ -157,18 +157,21 @@ public class TheDefault extends CustomPlayer {
         logger.info("Begin loading starter Deck Strings");
 
         retVal.add(DefaultCommonAttack.ID);
+        retVal.add(DefaultCommonAttack.ID);
+        retVal.add(DefaultCommonAttack.ID);
 //        retVal.add(DefaultCommonAttack.ID);
-//        retVal.add(DefaultCommonAttack.ID);
-//        retVal.add(DefaultCommonAttack.ID);
+//        retVal.add(DefaultCommonSkill.ID);
         retVal.add(DefaultCommonSkill.ID);
-//        retVal.add(DefaultCommonSkill.ID);
-//        retVal.add(DefaultCommonSkill.ID);
-//        retVal.add(DefaultCommonSkill.ID);
-//        retVal.add(DefaultCommonSkill.ID);
-//        retVal.add(GrowCard.ID);
-//        retVal.add(SettleQuarry.ID);
+        retVal.add(DefaultCommonSkill.ID);
+        retVal.add(DefaultCommonSkill.ID);
+        retVal.add(DefaultCommonSkill.ID);
+        retVal.add(GrowCard.ID);
+        retVal.add(SettleQuarry.ID);
         retVal.add(TreeGrab.ID);
-        retVal.add(Whirlwind.ID);
+
+        //Temporary cards, just for testing them
+        retVal.add(Gank.ID);
+
         return retVal;
     }
 
@@ -209,7 +212,7 @@ public class TheDefault extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return AbstractCard.CardColor.RED;
+        return TheDefault.Enums.COLOR_TINY;
     }
 
     // Should return a color object to be used to color the trail of moving cards
@@ -234,7 +237,7 @@ public class TheDefault extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new DefaultCommonAttack();
+        return new SettleQuarry();
     }
 
     // The class name as it appears next to your player name in-game

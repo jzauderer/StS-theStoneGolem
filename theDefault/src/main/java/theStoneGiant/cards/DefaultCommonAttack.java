@@ -105,7 +105,7 @@ public class DefaultCommonAttack extends CustomCard {
                         // Let's find out what action *it* uses.
                         // I.e. i want energy gain or card draw, lemme check out Adrenaline
                         // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); // The animation the damage action uses to hit.
+                        AbstractGameAction.AttackEffect.BLUNT_HEAVY)); // The animation the damage action uses to hit.
     }
 
     // Upgraded stats.

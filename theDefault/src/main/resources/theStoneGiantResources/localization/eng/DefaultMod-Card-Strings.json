@@ -20,6 +20,10 @@
     "NAME": "Tree Grab",
     "DESCRIPTION": "Equip a thestonegiant:Tree for your next !M! attacks."
   },
+  "theStoneGiant:Gank": {
+    "NAME": "Gank",
+    "DESCRIPTION": "Deal !D! damage. NL If this is the first attack you've played this turn, deal an additional !M! damage."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",
