@@ -32,6 +32,7 @@ import theStoneGiant.util.IDCheckDontTouchPls;
 import theStoneGiant.util.TextureLoader;
 import theStoneGiant.variables.DefaultCustomVariable;
 import theStoneGiant.variables.DefaultSecondMagicNumber;
+import theStoneGiant.variables.TreeVolleyDamage;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -427,6 +428,7 @@ public class DefaultMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
+        BaseMod.addDynamicVariable(new TreeVolleyDamage());
         
         logger.info("Adding cards");
         // Add the cards

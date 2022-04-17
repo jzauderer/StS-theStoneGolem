@@ -173,6 +173,7 @@ public class TheDefault extends CustomPlayer {
         retVal.add(Gank.ID);
         retVal.add(JustTPOut.ID);
         retVal.add(EchoSabre.ID);
+        retVal.add(TreeVolley.ID);
 
         return retVal;
     }

@@ -29,11 +29,6 @@ public class Gank extends CustomCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("gank.png");
-    // Setting the image as as easy as can possibly be now. You just need to provide the image name
-    // and make sure it's in the correct folder. That's all.
-    // There's makeCardPath, makeRelicPath, power, orb, event, etc..
-    // The list of all of them can be found in the main DefaultMod.java file in the
-    // ==INPUT TEXTURE LOCATION== section under ==MAKE IMAGE PATHS==
 
 
     public static final String NAME = cardStrings.NAME;

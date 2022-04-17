@@ -32,6 +32,10 @@
     "NAME": "Echo Sabre",
     "DESCRIPTION": "Deal !D! damage twice. Apply !M! Weaken."
   },
+  "theStoneGiant:TreeVolley": {
+    "NAME": "Tree Volley",
+    "DESCRIPTION": "Consumes all stacks of thestonegiant:Tree. NL Deal !D! for each stack consumed. NL (Deal !theStoneGiant:TREE_VOLLEY_DAMAGE! damage total.)"
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",

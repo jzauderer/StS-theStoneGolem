@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theStoneGiant.DefaultMod;
+import theStoneGiant.cards.TreeVolley;
 import theStoneGiant.util.TextureLoader;
 
 import java.util.ArrayList;
@@ -58,9 +59,9 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
 
     //Cut damage done when wielding a tree
     @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
+    public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         //We're only modifying NORMAL type damage, so just return if it's not that
-        if(!type.equals(DamageInfo.DamageType.NORMAL))
+        if(!type.equals(DamageInfo.DamageType.NORMAL) || card.cardID == TreeVolley.ID)
             return super.atDamageGive(damage, type);
         //This won't affect strength bonus, so we subtract that before cutting the damage, then re-add it
         int str = 0;
@@ -76,7 +77,12 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
     //If playing an attack, copy the card for each monster
     @Override
     public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0 && card.target != AbstractCard.CardTarget.ALL && card.target != AbstractCard.CardTarget.NONE && card.target != AbstractCard.CardTarget.ALL_ENEMY)
+        //Tree power does not apply to Tree Volley
+        if(card.cardID == TreeVolley.ID){
+            super.onPlayCard(card, m);
+            return;
+        }
+        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0 && card.target != AbstractCard.CardTarget.ALL_ENEMY)
         {
             ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
             for(int i = 0; i < allMonsters.size(); i++){
