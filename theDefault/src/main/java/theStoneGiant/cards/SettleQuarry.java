@@ -45,7 +45,7 @@ public class SettleQuarry extends AbstractDynamicCard {
     public static final CardColor COLOR = TheDefault.Enums.COLOR_TINY;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 12;
     private static final int HEAL = 4;
 
     // /STAT DECLARATION/

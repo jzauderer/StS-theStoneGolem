@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -61,7 +60,8 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
     @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type, AbstractCard card) {
         //We're only modifying NORMAL type damage, so just return if it's not that
-        if(!type.equals(DamageInfo.DamageType.NORMAL) || card.cardID == TreeVolley.ID)
+        //Also, don't affect cards that hit all enemies
+        if(!type.equals(DamageInfo.DamageType.NORMAL) || card.cardID == TreeVolley.ID || card.target == AbstractCard.CardTarget.ALL_ENEMY)
             return super.atDamageGive(damage, type);
         //This won't affect strength bonus, so we subtract that before cutting the damage, then re-add it
         int str = 0;
@@ -75,51 +75,73 @@ public class TreePower extends AbstractPower implements CloneablePowerInterface 
     }
 
     //If playing an attack, copy the card for each monster
-    @Override
-    public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        //Tree power does not apply to Tree Volley
-        if(card.cardID == TreeVolley.ID){
-            super.onPlayCard(card, m);
-            return;
-        }
-        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0 && card.target != AbstractCard.CardTarget.ALL_ENEMY)
-        {
-            ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
-            for(int i = 0; i < allMonsters.size(); i++){
-                if(!allMonsters.get(i).equals(m)){
-                    //Re-play the card on all monsters other than the one we targeted
-                    AbstractCard tmp = card.makeSameInstanceOf();
-                    tmp.purgeOnUse = true;
-                    tmp.current_x = card.current_x;
-                    tmp.current_y = card.current_y;
-                    tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
-                    tmp.target_y = (float)Settings.HEIGHT / 2.0F;
-                    tmp.calculateCardDamage(allMonsters.get(i));
-                    AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, allMonsters.get(i), card.energyOnUse, true, true), true);
-                }
-            }
+//    @Override
+//    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+//        //Tree power does not apply to Tree Volley
+//        if(card.cardID == TreeVolley.ID){
+//            super.onPlayCard(card, m);
+//            return;
+//        }
+//        if(!card.purgeOnUse && card.type == AbstractCard.CardType.ATTACK && this.amount > 0 && card.target != AbstractCard.CardTarget.ALL_ENEMY)
+//        {
+//            ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
+//            for(int i = 0; i < allMonsters.size(); i++){
+//                if(!allMonsters.get(i).equals(m)){
+//                    //Re-play the card on all monsters other than the one we targeted
+//                    AbstractCard tmp = card.makeSameInstanceOf();
+//                    tmp.purgeOnUse = true;
+//                    tmp.current_x = card.current_x;
+//                    tmp.current_y = card.current_y;
+//                    tmp.target_x = (float) Settings.WIDTH / 2.0F - 300.0F * Settings.scale;
+//                    tmp.target_y = (float)Settings.HEIGHT / 2.0F;
+//                    tmp.calculateCardDamage(allMonsters.get(i));
+//                    AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, allMonsters.get(i), card.energyOnUse, true, true), true);
+//                }
+//            }
+//
+//            //Remove a charge of Tree after using an attack
+//            this.amount--;
+//            this.updateDescription();
+//            if(this.amount == 0)
+//                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
+//        }
+//
+//        super.onPlayCard(card, m);
+//    }
 
-            //Remove a charge of Tree after using an attack
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        AbstractCard card = AbstractDungeon.actionManager.cardsPlayedThisTurn.get(AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - 1);
+        //Make sure it isn't recursively cleaving damage forever
+        //Also make sure we aren't cleaving with cards that already hit all enemies
+        if(card.target == AbstractCard.CardTarget.ALL_ENEMY || info.name == "tree-cleave" || card.cardID == TreeVolley.ID)
+            return;
+        info.name = "tree-cleave";
+
+        //Duplicate damage to all enemies
+        ArrayList<AbstractMonster> allMonsters = AbstractDungeon.getMonsters().monsters;
+        for(int i = 0; i < allMonsters.size(); i++){
+            if(!allMonsters.get(i).equals(target)){
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(allMonsters.get(i), info));
+            }
+        }
+
+    }
+
+    // Remove a charge of Tree after using an attack
+    @Override
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        //Don't remove a stack if we used an attack that targeted all or was tree volley
+        if(card.type == AbstractCard.CardType.ATTACK && !(card.target == AbstractCard.CardTarget.ALL_ENEMY || card.cardID == TreeVolley.ID)){
             this.amount--;
             this.updateDescription();
             if(this.amount == 0)
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
         }
-
-        super.onPlayCard(card, m);
+        super.onAfterUseCard(card, action);
     }
 
-    //Remove a charge of Tree after using an attack
-//    @Override
-//    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-//        if(card.type == AbstractCard.CardType.ATTACK){
-//            if(owner.getPower(TreePower.POWER_ID).amount > 1)
-//                owner.addPower(new TreePower(owner, owner, -1));
-//            else
-//                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(owner, owner, TreePower.POWER_ID));
-//        }
-//        super.onAfterUseCard(card, action);
-//    }
+
 
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override

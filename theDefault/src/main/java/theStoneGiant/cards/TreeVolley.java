@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theStoneGiant.DefaultMod;
-import theStoneGiant.cardmodifiers.TreeVolleyMod;
 import theStoneGiant.characters.TheDefault;
 import theStoneGiant.powers.GrowPower;
 import theStoneGiant.powers.TreePower;

@@ -41,7 +41,7 @@ public class SettleQuarryAction extends AbstractGameAction {
             this.target.damage(this.info);
             grow--;
             if(grow <= 0){
-                if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.hasPower("Minion")) {
+                if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.hasPower("Minion") && !this.target.halfDead) {
                     p.heal(heal);
                 }
             }
