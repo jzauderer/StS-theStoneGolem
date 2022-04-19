@@ -167,14 +167,15 @@ public class TheDefault extends CustomPlayer {
 //        retVal.add(DefaultCommonSkill.ID);
 //        retVal.add(DefaultCommonSkill.ID);
         retVal.add(GrowCard.ID);
-        retVal.add(SettleQuarry.ID);
+//        retVal.add(SettleQuarry.ID);
         retVal.add(TreeGrab.ID);
 
         //Temporary cards, just for testing them
-        retVal.add(Gank.ID);
-        retVal.add(JustTPOut.ID);
-        retVal.add(EchoSabre.ID);
-        retVal.add(TreeVolley.ID);
+//        retVal.add(Gank.ID);
+//        retVal.add(JustTPOut.ID);
+//        retVal.add(EchoSabre.ID);
+//        retVal.add(TreeVolley.ID);
+        retVal.add(CraggyExterior.ID);
 
         return retVal;
     }

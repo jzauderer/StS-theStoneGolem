@@ -36,6 +36,10 @@
     "NAME": "Tree Volley",
     "DESCRIPTION": "Consumes all stacks of thestonegiant:Tree. NL Deal !D! for each stack consumed. NL (Deal !theStoneGiant:TREE_VOLLEY_DAMAGE! damage total.)"
   },
+  "theStoneGiant:CraggyExterior": {
+  "NAME": "Craggy Exterior",
+  "DESCRIPTION": "Gain !B! Block and !M! Thorns for each stack of thestonegiant:Grow you have."
+  },
   "theStoneGiant:DefaultCommonPower": {
     "NAME": "Hold Place",
     "DESCRIPTION": "Gain !M! thestonegiant:Keyword.",
