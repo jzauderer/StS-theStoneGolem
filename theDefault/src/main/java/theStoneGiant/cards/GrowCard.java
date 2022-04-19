@@ -3,6 +3,7 @@ package theStoneGiant.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
@@ -13,6 +14,7 @@ import theStoneGiant.characters.TheDefault;
 import theStoneGiant.powers.GrowPower;
 
 import static theStoneGiant.DefaultMod.makeCardPath;
+import static theStoneGiant.DefaultMod.makeID;
 
 public class GrowCard extends AbstractDynamicCard {
 

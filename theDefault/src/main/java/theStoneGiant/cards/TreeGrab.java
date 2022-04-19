@@ -2,6 +2,7 @@ package theStoneGiant.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
@@ -12,6 +13,7 @@ import theStoneGiant.powers.GrowPower;
 import theStoneGiant.powers.TreePower;
 
 import static theStoneGiant.DefaultMod.makeCardPath;
+import static theStoneGiant.DefaultMod.makeID;
 
 public class TreeGrab extends AbstractDynamicCard {
 
@@ -52,6 +54,7 @@ public class TreeGrab extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        CardCrawlGame.sound.play(makeID("Tree_Grab"));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new TreePower(p, p, AMOUNT)));
     }
 

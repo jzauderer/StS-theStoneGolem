@@ -75,6 +75,7 @@ public class DefaultMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
+        AddAudioSubscriber,
         PostInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
@@ -368,7 +369,18 @@ public class DefaultMod implements
     }
     
     // =============== / POST-INITIALIZE/ =================
-    
+
+    // ================ ADD SOUNDS ===================
+
+    @Override
+    public void receiveAddAudio() {
+        BaseMod.addAudio(makeID("GROW"), getModID() + "Resources/audio/grow.ogg");
+        BaseMod.addAudio(makeID("Tree_Grab"), getModID() + "Resources/audio/Tree_Grab.ogg");
+    }
+
+    // ================ /ADD SOUNDS/ ===================
+
+
     // ================ ADD POTIONS ===================
     
     public void receiveEditPotions() {
