@@ -42,7 +42,7 @@ public class GrowCard extends AbstractDynamicCard {
 
     private int AMOUNT = 1;
 
-    private int GROW_POTENCY = 3;
+    private int GROW_POTENCY = 2;
 
 
     // /STAT DECLARATION/

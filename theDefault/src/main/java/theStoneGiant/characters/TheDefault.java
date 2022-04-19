@@ -175,7 +175,7 @@ public class TheDefault extends CustomPlayer {
 //        retVal.add(JustTPOut.ID);
 //        retVal.add(EchoSabre.ID);
 //        retVal.add(TreeVolley.ID);
-        retVal.add(CraggyExterior.ID);
+//        retVal.add(CraggyExterior.ID);
 
         return retVal;
     }
